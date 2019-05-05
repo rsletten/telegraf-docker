@@ -1,0 +1,21 @@
+version: "2"
+services:
+  telegraf:
+    image: nuntz/telegraf-snmp
+    container_name: telegraf
+    restart: always
+    ports:
+      - 8125:8125
+      - 8092:8092
+      - 8094:8094
+    networks:
+      - monitoring
+    volumes:
+      - telegraf-volume:/etc/telegraf/
+
+networks:
+  monitoring:
+
+volumes:
+  telegraf-volume:
+    external: true
